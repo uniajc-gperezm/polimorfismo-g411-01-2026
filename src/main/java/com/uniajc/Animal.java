@@ -8,6 +8,10 @@ import com.uniajc.interfaces.ITerrestres;
 // Una clase puede heredar de una sola clase, pero puede implementar múltiples interfaces.
 public class Animal extends AnimalPadre implements INadadores, ITerrestres {
 
+    public void hacerSonido() {
+        System.out.println("El animal hace un sonido");
+    }
+
     public void comer() {
         System.out.println("El animal come");
     }
