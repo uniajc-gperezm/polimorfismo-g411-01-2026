@@ -1,11 +1,10 @@
 package com.uniajc.abstracto;
 
-abstract class Figura {
+public abstract class Figura {
 
-    abstract double calcularArea();
+    public abstract double calcularArea();
 
-    public void mostrarArea() {
-        double area = calcularArea();
-        System.out.println("El área de la figura es: " + area);
+    public void imprimir() {
+        System.out.println("El área de esta figura es: " + calcularArea());
     }
 }

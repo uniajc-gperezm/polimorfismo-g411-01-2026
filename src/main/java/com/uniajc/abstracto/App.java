@@ -6,8 +6,8 @@ public class App {
         Figura rectangulo = new Rectangulo(4, 6);
         Figura cuadrado = new Cuadrado(3);
 
-        circulo.mostrarArea();
-        rectangulo.mostrarArea();
-        cuadrado.mostrarArea();
+        circulo.imprimir();
+        rectangulo.imprimir();
+        cuadrado.imprimir();
     }
 }

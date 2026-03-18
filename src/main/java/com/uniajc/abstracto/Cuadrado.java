@@ -9,8 +9,15 @@ public class Cuadrado extends Figura {
     }
 
     @Override
-    double calcularArea() {
+    public double calcularArea() {
         return lado * lado;
     }
 
+    public double getLado() {
+        return lado;
+    }
+
+    public void setLado(double lado) {
+        this.lado = lado;
+    }
 }

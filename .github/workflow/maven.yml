@@ -1,0 +1,38 @@
+# 🤖 NOMBRE DEL FLUJO: Aparecerá en la pestaña "Actions" de tu repositorio en GitHub.
+name: Verificación Automática de Código (Java CI)
+
+# 🚀 DISPARADORES: Aquí definimos CUÁNDO se debe ejecutar este robot.
+on:
+  # Se activa cuando alguien sube cambios (push) a la rama principal.
+  push:
+    branches: [ "main" ]
+  # Se activa cuando alguien abre una propuesta de cambio (Pull Request) hacia "main".
+  pull_request:
+    branches: [ "main" ]
+
+# 🛠️ TRABAJOS: Las tareas específicas que el robot va a realizar.
+jobs:
+  build:
+    # 💻 ENTORNO: GitHub nos presta una computadora virtual con Linux (Ubuntu) para correr el código.
+    runs-on: ubuntu-latest
+
+    # 🪜 PASOS: La lista de instrucciones que el robot seguirá en orden.
+    steps:
+    
+    # PASO 1: Descargar el código del estudiante en la computadora virtual.
+    - name: 📥 Clonando el repositorio...
+      uses: actions/checkout@v4
+    
+    # PASO 2: Instalar el Kit de Desarrollo de Java (JDK). 
+    # Usamos la versión 17 porque es moderna y estable (LTS).
+    - name: ☕ Configurando Java JDK 17...
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin' # 'Temurin' es una versión abierta y confiable de Java.
+        cache: maven           # Esto hace que las siguientes ejecuciones sean más rápidas.
+
+    # PASO 3: Ejecutar Maven para compilar y correr las pruebas unitarias (JUnit).
+    # Si algún test falla aquí, GitHub marcará el Pull Request con una X roja ❌.
+    - name: 🧪 Ejecutando Pruebas Unitarias con Maven...
+      run: mvn -B test --file pom.xml
